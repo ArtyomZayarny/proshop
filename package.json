@@ -7,9 +7,13 @@
   "author": "ArtyomZayarny",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
   },
   "scripts": {
-    "start": "node server/index"
+    "start": "node server/index",
+    "server": "nodemon server/index",
+    "client": "yarn --cwd front start",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
   }
 }
