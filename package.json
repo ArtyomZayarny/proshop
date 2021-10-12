@@ -7,6 +7,7 @@
   "author": "ArtyomZayarny",
   "license": "MIT",
   "dependencies": {
+    "@types/react-router-dom": "^5.3.1",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "concurrently": "^6.2.1",
