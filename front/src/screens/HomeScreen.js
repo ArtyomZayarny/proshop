@@ -4,10 +4,9 @@ import { getProductsList } from "../actions/productsActions";
 import axios from "axios";
 import ProductTile from "../components/product/ProductTile";
 import { Col, Row } from "react-bootstrap";
+import Loader from "../components/Loader/loader";
+import Message from "../components/Message/message";
 
-function getProducts() {
-  axios.get(`/api/products`);
-}
 export default function HomeScreen() {
   const dispatch = useDispatch();
   const productsList = useSelector((state) => state.productsList);
@@ -17,14 +16,20 @@ export default function HomeScreen() {
   }, [dispatch]);
   return (
     <div>
-      Home screen
-      <Row>
-        {products.map((product) => (
-          <Col key={product._id} sm={6} lg={4} xl={3}>
-            <ProductTile product={product} />
-          </Col>
-        ))}
-      </Row>
+      <h2>Latest products</h2>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <Row>
+          {products.map((product) => (
+            <Col key={product._id} sm={6} lg={4} xl={3}>
+              <ProductTile product={product} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </div>
   );
 }
