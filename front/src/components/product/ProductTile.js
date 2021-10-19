@@ -11,7 +11,7 @@ export default function ProductTile({ product }) {
 
       <Card.Body>
         <Link to={`/product/${product._id}`}>
-          <Card.Title>
+          <Card.Title as="div">
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
