@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Rating from "../Rating/Rating";
 
 export default function ProductTile({ product }) {
   return (
@@ -15,6 +16,8 @@ export default function ProductTile({ product }) {
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
+
+        <Rating value={product.rating} text={`${product.numReviews} reviews`} />
         <Card.Text as="div">
           <Card.Text as="h3">${product.price}</Card.Text>
         </Card.Text>
