@@ -23,7 +23,7 @@ export default function ProductScreen({ match, history }) {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <ProductDetails product={product} />
+        <ProductDetails />
       )}
     </>
   );

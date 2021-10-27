@@ -3,12 +3,10 @@ import { getArrRating } from "./helpers";
 
 export default function Stars({ value, color }) {
   const arrRating = getArrRating(value);
-  console.log("arrRating", arrRating);
-
   return (
     <>
-      {arrRating.map((item) => (
-        <span>
+      {arrRating.map((item, index) => (
+        <span key={index}>
           <i
             style={{ color }}
             className={
