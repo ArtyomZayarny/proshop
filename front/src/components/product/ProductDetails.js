@@ -1,17 +1,8 @@
 import React, { useState } from "react";
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Row, Col, ListGroup, Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import Loader from "../Loader/loader";
 import Message from "../Message/message";
-import Stars from "../Rating/Stars";
 import Price from "./Price";
 import ProductDescription from "./ProductDescription";
 import ProductImage from "./ProductImage";
@@ -19,7 +10,7 @@ import SelectProductAmount from "./SelectProductAmount";
 import StockStatus from "./StockStatus";
 
 export default function ProductDetails({ match, history }) {
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState("1");
   const addToCartHandler = () => {
     console.log("add to cart");
     // history.push(`/cart/${match.params.id}?qty=${qty}`);

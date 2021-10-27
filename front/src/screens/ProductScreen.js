@@ -8,8 +8,7 @@ import ProductDetails from "../components/product/ProductDetails";
 
 export default function ProductScreen({ match, history }) {
   const dispatch = useDispatch();
-  const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+
   useEffect(() => {
     dispatch(getProductDetails(match.params.id));
   }, []);
@@ -18,13 +17,7 @@ export default function ProductScreen({ match, history }) {
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <ProductDetails />
-      )}
+      <ProductDetails />
     </>
   );
 }

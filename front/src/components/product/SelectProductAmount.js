@@ -32,7 +32,7 @@ export default function SelectProductAmount({
 }
 
 SelectProductAmount.propTypes = {
-  amount: PropTypes.number,
+  amount: PropTypes.string,
   setAmount: PropTypes.func,
   availableCountInStock: PropTypes.number,
 };
