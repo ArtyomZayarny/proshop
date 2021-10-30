@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, ListGroup, Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import Loader from "../Loader/loader";
+import Loader from "../Loader/Loader";
 import Message from "../Message/message";
 import Price from "./Price";
 import ProductDescription from "./ProductDescription";

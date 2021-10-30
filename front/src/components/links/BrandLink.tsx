@@ -2,9 +2,14 @@ import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar } from "react-bootstrap";
 
-export default function BrandLink({ linkContent, to }) {
+interface BrandLinkProps {
+  linkContent: String;
+  to: String;
+}
+
+export default function BrandLink({ linkContent, to }: BrandLinkProps) {
   return (
-    <LinkContainer to={to}>
+    <LinkContainer to={`/${to}`}>
       <Navbar.Brand>{linkContent}</Navbar.Brand>
     </LinkContainer>
   );

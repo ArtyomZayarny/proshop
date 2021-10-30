@@ -4,7 +4,7 @@ import { getProductsList } from "../actions/productsActions";
 import axios from "axios";
 import ProductTile from "../components/product/ProductTile";
 import { Col, Row } from "react-bootstrap";
-import Loader from "../components/Loader/loader";
+import Loader from "../components/Loader/Loader";
 import Message from "../components/Message/message";
 
 export default function HomeScreen() {
