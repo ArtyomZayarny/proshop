@@ -3,7 +3,15 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../Rating/Rating";
 
-export default function ProductTile({ product }) {
+interface ProductTileProps {
+  _id: string;
+  image: string;
+  name: string;
+  rating: number;
+  numReviews: number;
+  price: number;
+}
+export const ProductTile: React.FC = ({ product }: ProductTileProps) => {
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${product._id}`}>
@@ -24,4 +32,4 @@ export default function ProductTile({ product }) {
       </Card.Body>
     </Card>
   );
-}
+};

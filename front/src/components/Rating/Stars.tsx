@@ -1,7 +1,11 @@
 import React from "react";
 import { getArrRating } from "./helpers";
 
-export default function Stars({ value, color }) {
+type StarsProps = {
+  value: number;
+  color?: string;
+};
+export default function Stars({ value, color = "#f8e825" }: StarsProps) {
   const arrRating = getArrRating(value);
   return (
     <>
@@ -22,7 +26,3 @@ export default function Stars({ value, color }) {
     </>
   );
 }
-
-Stars.defaultProps = {
-  color: "#f8e825",
-};

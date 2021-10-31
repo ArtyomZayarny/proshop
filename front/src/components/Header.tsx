@@ -3,7 +3,7 @@ import FontAwesomeIcon from "./FontAwesomeIcon";
 import BrandLink from "./links/BrandLink";
 import NavLinkWrapper from "./links/NavLinkWrapper";
 
-export default function Header() {
+export const Header: React.FC = () => {
   return (
     <header>
       <Navbar bg="dark" variant="dark">
@@ -22,4 +22,4 @@ export default function Header() {
       </Navbar>
     </header>
   );
-}
+};

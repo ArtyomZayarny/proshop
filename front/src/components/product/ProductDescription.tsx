@@ -1,15 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Col, ListGroup } from "react-bootstrap";
 import Stars from "../Rating/Stars";
 
-export default function ProductDescription({
+type ProductDescriptionProps = {
+  name: string;
+  rating: number;
+  numReviews: number;
+  price: number;
+  description: string;
+};
+export const ProductDescription: React.FC = ({
   name,
   rating,
   numReviews,
   price,
   description,
-}) {
+}: ProductDescriptionProps) => {
   return (
     <Col md={3}>
       <ListGroup>
@@ -24,12 +30,4 @@ export default function ProductDescription({
       </ListGroup>
     </Col>
   );
-}
-
-ProductDescription.propTypes = {
-  name: PropTypes.string,
-  rating: PropTypes.number,
-  numReviews: PropTypes.number,
-  price: PropTypes.number,
-  description: PropTypes.string,
 };

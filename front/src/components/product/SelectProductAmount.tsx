@@ -1,12 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Col, Form, ListGroup, Row } from "react-bootstrap";
 
-export default function SelectProductAmount({
+type SelectProductAmountProps = {
+  availableCountInStock: number;
+  setAmount: (value: string) => void;
+  amount: number;
+};
+
+export const SelectProductAmount: React.FC = ({
   availableCountInStock,
   setAmount,
   amount,
-}) {
+}: SelectProductAmountProps) => {
   return (
     <ListGroup.Item>
       <Row>
@@ -29,10 +34,4 @@ export default function SelectProductAmount({
       </Row>
     </ListGroup.Item>
   );
-}
-
-SelectProductAmount.propTypes = {
-  amount: PropTypes.string,
-  setAmount: PropTypes.func,
-  availableCountInStock: PropTypes.number,
 };

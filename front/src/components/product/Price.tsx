@@ -1,8 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Col, Row } from "react-bootstrap";
 
-export default function Price({ price }) {
+type PriceProps = { price: number };
+
+export const Price: React.FC = ({ price }: PriceProps) => {
   return (
     <Row>
       <Col>Price:</Col>
@@ -11,8 +12,4 @@ export default function Price({ price }) {
       </Col>
     </Row>
   );
-}
-
-Price.propTypes = {
-  price: PropTypes.number,
 };
