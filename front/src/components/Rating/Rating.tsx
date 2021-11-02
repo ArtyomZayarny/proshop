@@ -1,5 +1,5 @@
 import React from "react";
-import Stars from "./Stars";
+import { Stars } from "./Stars";
 
 type RatingProps = {
   color?: string;
@@ -7,15 +7,15 @@ type RatingProps = {
   value: number;
 };
 
-export default function Rating({
+export const Rating: React.FC<RatingProps> = ({
   color = "#f8e825",
   text,
   value,
-}: RatingProps) {
+}) => {
   return (
     <div className="rating">
       <Stars value={value} />
       <span>{text && text}</span>
     </div>
   );
-}
+};

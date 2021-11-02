@@ -3,15 +3,15 @@ import { Col, Form, ListGroup, Row } from "react-bootstrap";
 
 type SelectProductAmountProps = {
   availableCountInStock: number;
-  setAmount: (value: string) => void;
+  setAmount: (value: number) => void;
   amount: number;
 };
 
-export const SelectProductAmount: React.FC = ({
+export const SelectProductAmount: React.FC<SelectProductAmountProps> = ({
   availableCountInStock,
   setAmount,
   amount,
-}: SelectProductAmountProps) => {
+}) => {
   return (
     <ListGroup.Item>
       <Row>
@@ -21,7 +21,7 @@ export const SelectProductAmount: React.FC = ({
             as="select"
             value={amount}
             onChange={(e) => {
-              setAmount(e.target.value);
+              setAmount(parseInt(e.target.value));
             }}
           >
             {[...Array(availableCountInStock).keys()].map((x) => (

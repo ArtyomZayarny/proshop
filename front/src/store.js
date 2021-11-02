@@ -6,6 +6,22 @@ import {
   productsListReducer,
 } from "./reducers/productsReducer";
 
+export interface RootState {
+  productDetails: {
+    loading: boolean,
+    error: string,
+    product: {
+      name: string,
+      image: string,
+      rating: number,
+      numReviews: number,
+      price: number,
+      description: string,
+      countInStock: number,
+    },
+  };
+}
+
 const reducers = combineReducers({
   productsList: productsListReducer,
   productDetails: productDetailsReducer,

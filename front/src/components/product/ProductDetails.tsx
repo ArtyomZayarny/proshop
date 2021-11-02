@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, ListGroup, Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 import { Loader } from "../Loader/Loader";
 import { Message } from "../Message/message";
 import { Price } from "./Price";
@@ -9,13 +10,15 @@ import { ProductImage } from "./ProductImage";
 import { SelectProductAmount } from "./SelectProductAmount";
 import { StockStatus } from "./StockStatus";
 
-export const ProductDetails: React.FC = ({ match, history }) => {
-  const [qty, setQty] = useState("1");
+export const ProductDetails: React.FC = () => {
+  const [qty, setQty] = useState(1);
   const addToCartHandler = () => {
     console.log("add to cart");
     // history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
-  const productDetails = useSelector((state) => state.productDetails);
+  const productDetails = useSelector(
+    (state: RootState) => state.productDetails
+  );
   const { loading, error, product } = productDetails;
 
   return (

@@ -1,17 +1,19 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Rating from "../Rating/Rating";
+import { Rating } from "../Rating/Rating";
 
 interface ProductTileProps {
-  _id: string;
-  image: string;
-  name: string;
-  rating: number;
-  numReviews: number;
-  price: number;
+  product: {
+    _id: string;
+    image: string;
+    name: string;
+    rating: number;
+    numReviews: number;
+    price: number;
+  };
 }
-export const ProductTile: React.FC = ({ product }: ProductTileProps) => {
+export const ProductTile: React.FC<ProductTileProps> = ({ product }) => {
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${product._id}`}>

@@ -1,13 +1,13 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
 
-interface messageProps {
+type messageProps = {
   variant?: string;
   children: string;
-}
-export const Message: React.FC = ({
+};
+export const Message: React.FC<messageProps> = ({
   variant = "info",
   children,
-}: messageProps) => {
+}) => {
   return <Alert variant={variant}>{children}</Alert>;
 };

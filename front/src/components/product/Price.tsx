@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 
 type PriceProps = { price: number };
 
-export const Price: React.FC = ({ price }: PriceProps) => {
+export const Price: React.FC<PriceProps> = ({ price }) => {
   return (
     <Row>
       <Col>Price:</Col>

@@ -4,8 +4,9 @@ import { getArrRating } from "./helpers";
 type StarsProps = {
   value: number;
   color?: string;
+  text?: string;
 };
-export default function Stars({ value, color = "#f8e825" }: StarsProps) {
+export const Stars: React.FC<StarsProps> = ({ value, color = "#f8e825" }) => {
   const arrRating = getArrRating(value);
   return (
     <>
@@ -25,4 +26,4 @@ export default function Stars({ value, color = "#f8e825" }: StarsProps) {
       ))}
     </>
   );
-}
+};

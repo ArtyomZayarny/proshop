@@ -1,7 +1,7 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import FontAwesomeIcon from "./FontAwesomeIcon";
-import BrandLink from "./links/BrandLink";
-import NavLinkWrapper from "./links/NavLinkWrapper";
+import { FontAwesomeIcon } from "./FontAwesomeIcon";
+import { BrandLink } from "./links/BrandLink";
+import { NavLinkWrapper } from "./links/NavLinkWrapper";
 
 export const Header: React.FC = () => {
   return (

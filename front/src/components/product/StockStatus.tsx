@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 
 type StockStatusProps = { countInStock: number };
 
-export const StockStatus: React.FC = ({ countInStock }: StockStatusProps) => {
+export const StockStatus: React.FC<StockStatusProps> = ({ countInStock }) => {
   return (
     <Row>
       <Col>Status:</Col>

@@ -7,10 +7,10 @@ interface NavLinkProps {
   to: string;
 }
 
-export default function NavLink({ children, to }: NavLinkProps) {
+export const NavLink: React.FC<NavLinkProps> = ({ children, to }) => {
   return (
     <LinkContainer to={to}>
       <Nav.Link>{children}</Nav.Link>
     </LinkContainer>
   );
-}
+};

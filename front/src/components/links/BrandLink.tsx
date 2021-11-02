@@ -7,10 +7,10 @@ interface BrandLinkProps {
   to: string;
 }
 
-export default function BrandLink({ linkContent, to }: BrandLinkProps) {
+export const BrandLink: React.FC<BrandLinkProps> = ({ linkContent, to }) => {
   return (
     <LinkContainer to={to}>
       <Navbar.Brand>{linkContent}</Navbar.Brand>
     </LinkContainer>
   );
-}
+};

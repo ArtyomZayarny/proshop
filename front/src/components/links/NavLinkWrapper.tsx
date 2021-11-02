@@ -1,5 +1,5 @@
 import React from "react";
-import NavLink from "./NavLink";
+import { NavLink } from "./NavLink";
 
 interface NavLinkWrapperProps {
   children: React.ReactNode;
@@ -7,15 +7,15 @@ interface NavLinkWrapperProps {
   to: string;
 }
 
-export default function NavLinkWrapper({
+export const NavLinkWrapper: React.FC<NavLinkWrapperProps> = ({
   children,
   text,
   to,
-}: NavLinkWrapperProps) {
+}) => {
   return (
     <NavLink to={to}>
       {children}
       <span className="p-2">{text}</span>
     </NavLink>
   );
-}
+};
