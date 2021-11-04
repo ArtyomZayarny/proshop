@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getProductDetails } from "../actions/productsActions";
 import { Link } from "react-router-dom";
-import { ProductDetails } from "../components/product/ProductDetails";
+import { ProductDetails } from "../components/Product/ProductDetails";
 
-export default function ProductScreen({ match, history }) {
+export const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,4 +18,4 @@ export default function ProductScreen({ match, history }) {
       <ProductDetails />
     </>
   );
-}
+};

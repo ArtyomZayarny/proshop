@@ -2,16 +2,10 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Rating } from "../Rating/Rating";
+import { IProduct } from "../../interfaces";
 
 interface ProductTileProps {
-  product: {
-    _id: string;
-    image: string;
-    name: string;
-    rating: number;
-    numReviews: number;
-    price: number;
-  };
+  product: IProduct;
 }
 export const ProductTile: React.FC<ProductTileProps> = ({ product }) => {
   return (

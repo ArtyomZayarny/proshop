@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductsList } from "../actions/productsActions";
-import { ProductTile } from "../components/product/ProductTile";
+import { ProductTile } from "../components/Product/ProductTile";
 import { Col, Row } from "react-bootstrap";
 import { Loader } from "../components/Loader/Loader";
 import { Message } from "../components/Message/message";
 
-export default function HomeScreen() {
+export const HomeScreen = () => {
   const dispatch = useDispatch();
   const productsList = useSelector((state) => state.productsList);
   const { loading, error, products } = productsList;
@@ -31,4 +31,4 @@ export default function HomeScreen() {
       )}
     </div>
   );
-}
+};

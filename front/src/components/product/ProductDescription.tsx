@@ -1,15 +1,9 @@
 import React from "react";
 import { Col, ListGroup } from "react-bootstrap";
 import { Stars } from "../Rating/Stars";
+import { IProduct } from "../../interfaces";
 
-type ProductDescriptionProps = {
-  name: string;
-  rating: number;
-  numReviews: number;
-  price: number;
-  description: string;
-};
-export const ProductDescription: React.FC<ProductDescriptionProps> = ({
+export const ProductDescription: React.FC<IProduct> = ({
   name,
   rating,
   numReviews,

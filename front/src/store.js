@@ -5,20 +5,13 @@ import {
   productDetailsReducer,
   productsListReducer,
 } from "./reducers/productsReducer";
+import { IProduct } from "./interfaces";
 
 export interface RootState {
   productDetails: {
     loading: boolean,
     error: string,
-    product: {
-      name: string,
-      image: string,
-      rating: number,
-      numReviews: number,
-      price: number,
-      description: string,
-      countInStock: number,
-    },
+    product: IProduct,
   };
 }
 
