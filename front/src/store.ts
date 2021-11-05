@@ -9,9 +9,9 @@ import { IProduct } from "./interfaces";
 
 export interface RootState {
   productDetails: {
-    loading: boolean,
-    error: string,
-    product: IProduct,
+    loading: boolean;
+    error: string;
+    product: IProduct;
   };
 }
 
@@ -21,7 +21,15 @@ const reducers = combineReducers({
 });
 
 const middleware = [thunk];
-const inititalState = { cart: [] };
+export interface IState {
+  loading?: boolean;
+  error?: string;
+  cart?: any[];
+  products?: any[];
+  productDetails?: any;
+  productsLists?: any;
+}
+const inititalState: IState = { cart: [] };
 const store = createStore(
   reducers,
   inititalState,
