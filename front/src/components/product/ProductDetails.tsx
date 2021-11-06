@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { Row, Col, ListGroup, Card, Button } from "react-bootstrap";
+import { Row, Col, ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { RootState } from "../../store";
 import { Loader } from "../Loader/Loader";
 import { Message } from "../Message/message";
-import { Price } from "./Price";
 import { ProductDescription } from "./ProductDescription";
 import { ProductImage } from "./ProductImage";
-import { SelectProductAmount } from "./SelectProductAmount";
-import { StockStatus } from "./StockStatus";
 
 export const ProductDetails: React.FC = () => {
   const [qty, setQty] = useState(1);
-  const addToCartHandler = () => {
+  const addToCartHandler = (): void => {
     console.log("add to cart");
     // history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
@@ -37,40 +35,14 @@ export const ProductDetails: React.FC = () => {
               numReviews={product.numReviews}
               price={product.price}
               description={product.description}
+              countInStock={product.countInStock}
+              qty={qty}
+              setQty={setQty}
+              addToCartHandler={addToCartHandler}
             />
-            <Col md={3}>
-              <Card>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    <Price price={product.price} />
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <StockStatus countInStock={product.countInStock} />
-                  </ListGroup.Item>
-                  {product.countInStock > 0 && (
-                    <SelectProductAmount
-                      availableCountInStock={product.countInStock}
-                      amount={qty}
-                      setAmount={setQty}
-                    />
-                  )}
-                  <ListGroup.Item>
-                    <Button
-                      onClick={addToCartHandler}
-                      style={{ width: "100%" }}
-                      disabled={product.countInStock === 0}
-                      variant="primary"
-                      block
-                    >
-                      Add to cart
-                    </Button>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card>
-            </Col>
           </Row>
           <Row>
-            <Col md={6}>
+            <Col md={6} className="pt-3">
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant="flush">
@@ -82,11 +54,11 @@ export const ProductDetails: React.FC = () => {
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
-                <ListGroup.Item>
+                <>
                   <h2>Write a customer Revies</h2>
                   {/* {errorProdutReview && (
-              <Message variant="danger">{errorProdutReview}</Message>
-            )} */}
+                    <Message variant="danger">{errorProdutReview}</Message>
+                  )} */}
                   {/* {userInfo ? (
               <Form onSubmit={submitHandler}>
                 <Form.Group>
@@ -117,12 +89,12 @@ export const ProductDetails: React.FC = () => {
                   Submit
                 </Button>
               </Form>
-            ) : (
-              <Message>
-                Please <Link to="/login">sign in</Link> to write a review
-              </Message>
-            )} */}
-                </ListGroup.Item>
+            ) : ( */}
+                  <Message>
+                    Please <Link to="/login">sign in</Link> to write a review
+                  </Message>
+                  {/* )} */}
+                </>
               </ListGroup>
             </Col>
           </Row>

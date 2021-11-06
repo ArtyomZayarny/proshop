@@ -1,32 +1,10 @@
+import { IState } from "../../store";
 import {
-  PRODUCT_DETAILS_FAIL,
-  PRODUCT_DETAILS_REQUEST,
-  PRODUCT_DETAILS_SUCCESS,
-} from "../constants/productsConstants";
-import { IState } from "../store";
-
-enum ProductListTypes {
-  PRODUCTS_LIST_REQUEST = "PRODUCTS_LIST_REQUEST",
-  PRODUCTS_LIST_SUCCESS = "PRODUCTS_LIST_SUCCESS",
-  PRODUCTS_LIST_FAIL = "PRODUCTS_LIST_FAIL",
-}
-
-interface ProductListRequestAction {
-  type: ProductListTypes.PRODUCTS_LIST_REQUEST;
-}
-interface ProductListSuccessAction {
-  type: ProductListTypes.PRODUCTS_LIST_SUCCESS;
-  payload: any[];
-}
-interface ProductListFailAction {
-  type: ProductListTypes.PRODUCTS_LIST_FAIL;
-  payload: string;
-}
-
-type ProductListAction =
-  | ProductListRequestAction
-  | ProductListSuccessAction
-  | ProductListFailAction;
+  ProductListAction,
+  ProductListTypes,
+  ProductDetailsAction,
+  ProductDetailsTypes,
+} from "./interface";
 
 export const productsListReducer = (
   state = { products: [] },
@@ -52,14 +30,14 @@ export const productsListReducer = (
 
 export const productDetailsReducer = (
   state = { product: { reviews: [] } },
-  action
+  action: ProductDetailsAction
 ) => {
   switch (action.type) {
-    case PRODUCT_DETAILS_REQUEST:
+    case ProductDetailsTypes.PRODUCT_DETAILS_REQUEST:
       return { loading: true, ...state };
-    case PRODUCT_DETAILS_SUCCESS:
+    case ProductDetailsTypes.PRODUCT_DETAILS_SUCCESS:
       return { loading: false, product: action.payload };
-    case PRODUCT_DETAILS_FAIL:
+    case ProductDetailsTypes.PRODUCT_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

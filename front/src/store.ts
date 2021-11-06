@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   productDetailsReducer,
   productsListReducer,
-} from "./reducers/productsReducer";
+} from "./reducers/ProductReducer/productsReducer";
 import { IProduct } from "./interfaces";
 
 export interface RootState {

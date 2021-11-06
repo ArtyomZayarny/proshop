@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Image } from "react-bootstrap";
 
 type ProductImageProps = {
-  src: string;
+  src?: string;
   name: string;
 };
 
