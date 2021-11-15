@@ -1,65 +1,71 @@
-import React, { useState } from "react";
-import { Row, Col, ListGroup } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { RootState } from "../../store";
-import { Loader } from "../Loader/Loader";
-import { Message } from "../Message/message";
-import { ProductDescription } from "./ProductDescription";
-import { ProductImage } from "./ProductImage";
+import React, { useState } from 'react';
+import { Row, Col, ListGroup } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+//import { RouteComponentProps } from "react-router";
+import { RouteComponentProps } from 'react-router';
+import { RootState } from '../../store';
+import { Loader } from '../Loader/Loader';
+import { Message } from '../Message/message';
+import { ProductDescription } from './ProductDescription';
+import { ProductImage } from './ProductImage';
 
-export const ProductDetails: React.FC = () => {
-  const [qty, setQty] = useState(1);
-  const addToCartHandler = (): void => {
-    console.log("add to cart");
-    // history.push(`/cart/${match.params.id}?qty=${qty}`);
-  };
-  const productDetails = useSelector(
-    (state: RootState) => state.productDetails
-  );
-  const { loading, error, product } = productDetails;
+interface ProductDetailProps {
+  id: string;
+}
 
-  return (
-    <>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <>
-          <Row>
-            <ProductImage src={product.image} name={product.name} />
-            <ProductDescription
-              name={product.name}
-              rating={product.rating}
-              numReviews={product.numReviews}
-              price={product.price}
-              description={product.description}
-              countInStock={product.countInStock}
-              qty={qty}
-              setQty={setQty}
-              addToCartHandler={addToCartHandler}
-            />
-          </Row>
-          <Row>
-            <Col md={6} className="pt-3">
-              <h2>Reviews</h2>
-              {product.reviews.length === 0 && <Message>No Reviews</Message>}
-              <ListGroup variant="flush">
-                {product.reviews.map((review) => (
-                  <ListGroup.Item key={review._id}>
-                    <strong>{review.name}</strong>
-                    {/* <Rating value={review.rating} /> */}
-                    <p>{review.createdAt.substring(0, 10)}</p>
-                    <p>{review.comment}</p>
-                  </ListGroup.Item>
-                ))}
-                <>
-                  <h2>Write a customer Revies</h2>
-                  {/* {errorProdutReview && (
+export const ProductDetails: React.FC<RouteComponentProps<ProductDetailProps>> =
+  ({ match, history }) => {
+    const [qty, setQty] = useState(1);
+    const addToCartHandler = (): void => {
+      history.push(`/cart/${match.params.id}?qty=${qty}`);
+    };
+    const productDetails = useSelector(
+      (state: RootState) => state.productDetails
+    );
+    const { loading, error, product } = productDetails;
+
+    return (
+      <>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <>
+            <Row>
+              <ProductImage src={product.image} name={product.name} />
+              <ProductDescription
+                name={product.name}
+                rating={product.rating}
+                numReviews={product.numReviews}
+                price={product.price}
+                description={product.description}
+                countInStock={product.countInStock}
+                qty={qty}
+                setQty={setQty}
+                addToCartHandler={addToCartHandler}
+              />
+            </Row>
+            <Row>
+              <Col md={6} className="pt-3">
+                <h2>Reviews</h2>
+                {product.reviews.length === 0 && <Message>No Reviews</Message>}
+                <ListGroup variant="flush">
+                  {product.reviews.map((review) => (
+                    <ListGroup.Item key={review._id}>
+                      <strong>{review.name}</strong>
+                      {/* <Rating value={review.rating} /> */}
+                      <p>{review.createdAt.substring(0, 10)}</p>
+                      <p>{review.comment}</p>
+                    </ListGroup.Item>
+                  ))}
+                  <>
+                    <h2>Write a customer Revies</h2>
+                    {/* {errorProdutReview && (
                     <Message variant="danger">{errorProdutReview}</Message>
                   )} */}
-                  {/* {userInfo ? (
+                    {/* {userInfo ? (
               <Form onSubmit={submitHandler}>
                 <Form.Group>
                   <Form.Label>Rating</Form.Label>
@@ -90,16 +96,16 @@ export const ProductDetails: React.FC = () => {
                 </Button>
               </Form>
             ) : ( */}
-                  <Message>
-                    Please <Link to="/login">sign in</Link> to write a review
-                  </Message>
-                  {/* )} */}
-                </>
-              </ListGroup>
-            </Col>
-          </Row>
-        </>
-      )}
-    </>
-  );
-};
+                    <Message>
+                      Please <Link to="/login">sign in</Link> to write a review
+                    </Message>
+                    {/* )} */}
+                  </>
+                </ListGroup>
+              </Col>
+            </Row>
+          </>
+        )}
+      </>
+    );
+  };

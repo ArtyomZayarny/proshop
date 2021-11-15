@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getProductsList } from "../actions/productsActions";
-import { ProductTile } from "../components/Product/ProductTile";
-import { Col, Row } from "react-bootstrap";
-import { Loader } from "../components/Loader/Loader";
-import { Message } from "../components/Message/message";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductsList } from '../actions/productsActions';
+import { ProductTile } from '../components/Product/ProductTile';
+import { Col, Row } from 'react-bootstrap';
+import { Loader } from '../components/Loader/Loader';
+import { Message } from '../components/Message/message';
 
 export const HomeScreen = () => {
   const dispatch = useDispatch();
