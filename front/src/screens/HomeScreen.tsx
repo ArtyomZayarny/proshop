@@ -5,10 +5,12 @@ import { ProductTile } from '../components/Product/ProductTile';
 import { Col, Row } from 'react-bootstrap';
 import { Loader } from '../components/Loader/Loader';
 import { Message } from '../components/Message/message';
+import { IState } from '../store';
+import { IProduct } from '../interfaces';
 
 export const HomeScreen = () => {
   const dispatch = useDispatch();
-  const productsList = useSelector((state) => state.productsList);
+  const productsList = useSelector((state: IState) => state.productsList);
   const { loading, error, products } = productsList;
   useEffect(() => {
     dispatch(getProductsList());
@@ -22,7 +24,7 @@ export const HomeScreen = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <Row>
-          {products.map((product) => (
+          {products.map((product: IProduct) => (
             <Col key={product._id} sm={6} lg={4} xl={3}>
               <ProductTile product={product} />
             </Col>

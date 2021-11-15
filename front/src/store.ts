@@ -1,11 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   productDetailsReducer,
   productsListReducer,
-} from "./reducers/ProductReducer/productsReducer";
-import { IProduct } from "./interfaces";
+} from './reducers/ProductReducer/productsReducer';
+import { IProduct } from './interfaces';
 
 export interface RootState {
   productDetails: {
@@ -27,7 +27,7 @@ export interface IState {
   cart?: any[];
   products?: any[];
   productDetails?: any;
-  productsLists?: any;
+  productsList?: any;
 }
 const inititalState: IState = { cart: [] };
 const store = createStore(

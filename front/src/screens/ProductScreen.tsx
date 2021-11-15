@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProductDetails } from '../actions/productsActions';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { ProductDetails } from '../components/Product/ProductDetails';
 
-export const ProductScreen = ({ match, history }) => {
-  const dispatch = useDispatch();
+type MatchParams = {
+  id: string;
+};
 
+export const ProductScreen: React.FC = () => {
+  const dispatch = useDispatch();
+  const match = useRouteMatch<MatchParams>();
   useEffect(() => {
-    // console.log("match", match);
     dispatch(getProductDetails(match.params.id));
   }, [match, dispatch]);
   return (
@@ -16,7 +19,7 @@ export const ProductScreen = ({ match, history }) => {
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
-      <ProductDetails match={match} history={history} />
+      <ProductDetails />
     </>
   );
 };
